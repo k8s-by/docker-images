@@ -12,6 +12,11 @@ push:
 push-all:
 	$(foreach version, $(VERSIONS), make push VERSION=$(version);)
 
-release: build push
+release:
+	docker manifest inspect $(DOCKER_REGISTRY)/$(DOCKER_NAME):$(VERSION) || ( \
+		make build VERSION=$(VERSION) && \
+		docker push $(DOCKER_REGISTRY)/$(DOCKER_NAME):$(VERSION) \
+	)
 
-release-all: build-all push-all
+release-all:
+	$(foreach version, $(VERSIONS), make release VERSION=$(version);)
