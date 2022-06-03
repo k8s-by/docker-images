@@ -7,7 +7,7 @@ build-all:
 	$(foreach version, $(VERSIONS), make build VERSION=$(version);)
 
 push:
-	docker push $(DOCKER_REGISTRY)/$(DOCKER_NAME):$(VERSION)
+	docker manifest inspect $(DOCKER_REGISTRY)/$(DOCKER_NAME):$(VERSION) || docker push $(DOCKER_REGISTRY)/$(DOCKER_NAME):$(VERSION)
 
 push-all:
 	$(foreach version, $(VERSIONS), make push VERSION=$(version);)
