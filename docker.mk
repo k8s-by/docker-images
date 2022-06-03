@@ -1,22 +1,21 @@
 include build.properties
 
-build:
+check:
+	ifndef DOCKER_REGISTRY
+	$(error "DOCKER_REGISTRY is not defined")
+	endif
+
+build: check
 	docker build -t $(DOCKER_REGISTRY)/$(DOCKER_NAME):$(VERSION) --build-arg VERSION=$(VERSION) .
 
-build-all:
+build-all: check
 	$(foreach version, $(VERSIONS), make build VERSION=$(version);)
 
-push:
-	docker manifest inspect $(DOCKER_REGISTRY)/$(DOCKER_NAME):$(VERSION) || docker push $(DOCKER_REGISTRY)/$(DOCKER_NAME):$(VERSION)
-
-push-all:
-	$(foreach version, $(VERSIONS), make push VERSION=$(version);)
-
-release:
+release: check
 	docker manifest inspect $(DOCKER_REGISTRY)/$(DOCKER_NAME):$(VERSION) || ( \
 		make build VERSION=$(VERSION) && \
 		docker push $(DOCKER_REGISTRY)/$(DOCKER_NAME):$(VERSION) \
 	)
 
-release-all:
+release-all: check
 	$(foreach version, $(VERSIONS), make release VERSION=$(version);)
