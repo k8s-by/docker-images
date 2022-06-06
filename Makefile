@@ -3,6 +3,7 @@ build-all:
 	(cd elastic; make build-all)
 	(cd kibana; make build-all)
 	(cd logstash; make build-all)
+	(cd pgbouncer; make build-all)
 	(cd vault; make build-all)
 
 release-all:
@@ -10,4 +11,5 @@ release-all:
 	(cd elastic; make release-all)
 	(cd kibana; make release-all)
 	(cd logstash; make release-all)
+	(cd pgbouncer; make release-all)
 	(cd vault; make release-all)
