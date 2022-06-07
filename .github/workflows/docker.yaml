@@ -32,7 +32,7 @@ jobs:
           DOCKER_REGISTRIES: ${{ secrets.DOCKER_REGISTRIES }}
         run: |
           for DOCKER_REGISTRY in DOCKER_REGISTRIES; do
-            DOCKER_REGISTRY="docker.io/${{ secrets.DOCKERHUB_REPOSITORY }}" make release-all
+            make release-all
           done
 
 
