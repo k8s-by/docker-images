@@ -31,8 +31,8 @@ jobs:
         env:
           DOCKER_REGISTRIES: ${{ secrets.DOCKER_REGISTRIES }}
         run: |
-          for DOCKER_REGISTRY in DOCKER_REGISTRIES; do
-            make release-all
+          for REGISTRY in DOCKER_REGISTRIES; do
+            DOCKER_REGISTRY=${REGISTRY} make release-all
           done
 
 
