@@ -1,4 +1,5 @@
 build-all:
+	(cd barman; make build-all)
 	(cd eck-operator; make build-all)
 	(cd elastic; make build-all)
 	(cd flunetbit; make build-all)
@@ -17,7 +18,7 @@ build-all:
 	(cd vmsingle; make build-all)
 
 release-all:
-	(cd eck-operator; make release-all)
+	(cd barman; make release-all)
 	(cd elastic; make release-all)
 	(cd fluentbit; make release-all)
 	(cd kibana; make release-all)
