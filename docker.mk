@@ -8,7 +8,7 @@ __check_defined = \
 build:
 	$(call check_defined, DOCKER_REGISTRY)
 	$(call check_defined, DOCKER_NAME)
-	docker build -t $(DOCKER_REGISTRY)/$(DOCKER_NAME):$(VERSION) --build-arg VERSION=$(VERSION) .
+	docker build -t $(DOCKER_REGISTRY)/$(DOCKER_NAME):$(VERSION) --build-arg VERSION=$(VERSION) $(EXTRA_ARGS) .
 
 build-all:
 	$(call check_defined, DOCKER_REGISTRY)
@@ -29,3 +29,4 @@ release-all:
 	$(call check_defined, DOCKER_NAME)
 	$(call check_defined, VERSIONS)
 	$(foreach version, $(VERSIONS), make release VERSION=$(version);)
+
