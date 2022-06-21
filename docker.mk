@@ -1,3 +1,5 @@
+ALPINE_VERSION?=3.16
+
 check_defined = \
     $(strip $(foreach 1,$1, \
         $(call __check_defined,$1,$(strip $(value 2)))))
@@ -8,7 +10,10 @@ __check_defined = \
 build:
 	$(call check_defined, DOCKER_REGISTRY)
 	$(call check_defined, DOCKER_NAME)
-	docker build -t $(DOCKER_REGISTRY)/$(DOCKER_NAME):$(VERSION) --build-arg VERSION=$(VERSION) $(EXTRA_ARGS) .
+	docker build -t $(DOCKER_REGISTRY)/$(DOCKER_NAME):$(VERSION) \
+		--build-arg VERSION=$(VERSION) \
+		--build-arg ALPINE_VERSION=$(ALPINE_VERSION) \
+		$(EXTRA_ARGS) .
 
 build-all:
 	$(call check_defined, DOCKER_REGISTRY)
