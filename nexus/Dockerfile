@@ -1,3 +1,5 @@
+ARG ALPINE_VERSION
+
 # Build jmx-exporter-javaagent
 FROM maven:3-jdk-8 as jmx-exporter
 
@@ -19,8 +21,6 @@ RUN git clone -b ${NEXUS_KEYCLOAK_PLUGIN_VERSION} https://github.com/k8s-by/nexu
 
 
 ############################################################################
-
-ARG ALPINE_VERSION
 
 # Main Image
 FROM alpine:${ALPINE_VERSION}
