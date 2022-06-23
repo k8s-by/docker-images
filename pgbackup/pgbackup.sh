@@ -27,7 +27,7 @@ ENABLE_GLOBALS_BACKUPS=false
 MIN_TO_KEEP=1440
 
 # Rsync enabled
-#RSYNC_ENABLED=true
+RSYNC_ENABLED=true
 
 
 ###########################
@@ -210,7 +210,7 @@ clear_redundant()
 
 rsync_backup()
 {
-  if RSYNC_BACKUP; then
+  if [ "${RSYNC_BACKUP}" ]; then
     echo "rsyncing ..."
     rsync -rltvvv --delete-after /opt/backups rsync://wb@d96c0c41c688.sn.mynetname.net/wbsync
   else
