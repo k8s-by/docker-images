@@ -210,7 +210,7 @@ clear_redundant()
 
 rsync_backup()
 {
-  if [ "${RSYNC_BACKUP}" ]; then
+  if [ "${RSYNC_ENABLED}" ]; then
     echo "rsyncing ..."
     rsync -rltvvv --delete-after /opt/backups rsync://wb@d96c0c41c688.sn.mynetname.net/wbsync
   else
