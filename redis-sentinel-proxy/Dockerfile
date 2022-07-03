@@ -6,7 +6,7 @@ FROM golang:1.17 AS builder
 ADD . /redis-sentinel-proxy/
 WORKDIR /redis-sentinel-proxy
 RUN go mod init redis-sentinel-proxy && \
-    go build -o redis-sentinel-proxy .
+     CGO_ENABLED=0 go build -o redis-sentinel-proxy .
 
 FROM alpine:$ALPINE_VERSION
 
