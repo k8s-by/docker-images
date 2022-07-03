@@ -11,7 +11,7 @@ RUN go mod init redis-sentinel-proxy && \
 FROM alpine:$ALPINE_VERSION
 
 COPY --from=builder /redis-sentinel-proxy/redis-sentinel-proxy /usr/local/bin/redis-sentinel-proxy
-#RUN apk --update --no-cache add redis
+
 
 ENTRYPOINT ["/usr/local/bin/redis-sentinel-proxy"]
 
