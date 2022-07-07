@@ -83,7 +83,7 @@ RUN apk add --no-cache --update \
     && apk del .backrest-build \
     && rm -rf /var/cache/apk/*
 
-COPY --chmod=755 files/entrypoint.sh /entrypoint.sh
+COPY files/entrypoint.sh /entrypoint.sh
 
 LABEL \
     org.opencontainers.image.version="${REPO_BUILD_TAG}" \
