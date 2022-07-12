@@ -15,7 +15,7 @@ BACKUP_DIR=/opt/backups/
 SCHEMA_ONLY_LIST=""
 
 # Will produce a custom-format backup if set to "yes"
-ENABLE_CUSTOM_BACKUPS=yes
+ENABLE_CUSTOM_BACKUPS=no
 
 # Will produce a gzipped plain-format backup if set to "yes"
 ENABLE_PLAIN_BACKUPS=yes
@@ -24,10 +24,10 @@ ENABLE_PLAIN_BACKUPS=yes
 ENABLE_GLOBALS_BACKUPS=false
 
 # Number of minutes to keep backups
-MIN_TO_KEEP=1440
+MIN_TO_KEEP=360
 
 # Rsync enabled
-RSYNC_ENABLED=true
+#RSYNC_ENABLED=true
 
 
 ###########################
@@ -210,9 +210,9 @@ clear_redundant()
 
 rsync_backup()
 {
-  if [ "${RSYNC_ENABLED}" ]; then
+  if [ "${RSYNC_ENABLED}" -a -n "${RSYNC_HOST}" ]; then
     echo "rsyncing ..."
-    rsync -rltvvv --delete-after /opt/backups rsync://wb@d96c0c41c688.sn.mynetname.net/wbsync
+    rsync -rltvvv --delete-after /opt/backups ${RSYNC_HOST}
   else
     echo "skipping rsync"
   fi
