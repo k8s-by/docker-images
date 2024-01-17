@@ -1,4 +1,4 @@
-ALPINE_VERSION?=3.16
+ALPINE_VERSION?=3.19
 
 check_defined = \
     $(strip $(foreach 1,$1, \
