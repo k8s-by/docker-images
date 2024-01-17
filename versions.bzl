@@ -1,3 +1,0 @@
-VAULT_VERSION = '1.10.3'
-
-VAULT_VERSIONS = ["1.10.1", "1.10.2", "1.10.3"]

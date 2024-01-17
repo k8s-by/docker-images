@@ -31,6 +31,7 @@ build-all:
 	(cd vmauth; make build-all)
 	(cd vmoperator; make build-all)
 	(cd vmsingle; make build-all)
+	(cd wbtools; make build-all)
 
 release-all:
 	(cd barman; make release-all)
@@ -63,3 +64,4 @@ release-all:
 	(cd vmauth; make release-all)
 	(cd vmoperator; make release-all)
 	(cd vmsingle; make release-all)
+	(cd wbtools; make release-all)
